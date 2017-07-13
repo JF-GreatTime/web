@@ -1,5 +1,5 @@
 /**
- * Created by Jang on 2016/12/25.
+ * Created by Jiang on 2016/12/25.
  */
 globelTempId="";
 function m$y(obool,newMaskClassName) {
