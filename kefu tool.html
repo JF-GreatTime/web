@@ -27,8 +27,101 @@
         a:hover {color:#ba2636;text-decoration:underline;}
         a:active {color:#ba2636;}
     </style>
+    <style>
+        p{
+            width:480px;height:30px;color:white;text-align: center;background: black;margin: 0 auto;line-height: 30px;font-size: 14px;
+        }
+        input {width: 300px; height: 20px; padding: 5px; border:1px solid #f90; font-size: 16px;}
+        textarea{
+            text-indent: 1px;
+            font-size: 16px;
+            padding: 5px;
+        }
+        td{font-size: 16px;}
+        #ul1 {border:1px solid #f90; width: 310px; margin: 0;padding: 0; display: none;}
+        li a { line-height: 20px; padding: 5px; text-decoration: none; color: black; display: block;}
+        li a:hover{ background: #f90; color: white; }
+    </style>
 </head>
 <body>
+    <table style="margin: 50px auto">
+        <tbody>
+        <tr>
+            <td>咨询日期：</td>
+            <td id="date"></td>
+        </tr>
+        <tr>
+            <td>客户姓名：</td>
+            <td><input type="text" id="name"/></td>
+        </tr>
+        <tr>
+            <td>手机联系：</td>
+            <td><input type="text" id="mob"/></td>
+        </tr>
+        <tr>
+            <td>座机联系：</td>
+            <td><input type="text" id="tel"/></td>
+        </tr>
+        <tr>
+            <td>公司名称：</td>
+            <td><input type="text" id="q"/>
+                <ul id="ul1"></ul></td>
+        </tr>
+        <tr>
+            <td>投放需求：</td>
+            <td>
+                <textarea name="need" id="need" cols="35.5" rows="10" ></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>对接人员：</td>
+            <!--<td><input type="text" id="people"/></td>-->
+            <td><select name="people" id="">
+
+            </select></td>
+        </tr>
+        <tr>
+            <td>QQ微信：</td>
+            <td><input type="text" id="qq"/></td>
+        </tr>
+        </tbody>
+    </table>
+
+    <!--名单增删-->
+    <script>
+        function jsonp(data) {
+            var oUl = document.getElementById('ul1');
+            var html = '';
+            if (data.s.length) {
+                oUl.style.display = 'block';
+                for (var i=0; i<data.s.length; i++) {
+                    html += '<li><a target="_blank" href="http://www.baidu.com/s?wd='+data.s[i]+'">'+ data.s[i] +'</a></li>';
+                }
+                oUl.innerHTML = html;
+            } else {
+                oUl.style.display = 'none';
+            }
+        };
+        window.onload = function() {
+
+            var oQ = document.getElementById('q');
+            var oUl = document.getElementById('ul1');
+
+            oQ.onkeyup = function() {
+                if ( this.value != '' ) {
+                    var oScript = document.createElement('script');
+                    oScript.src = 'http://suggestion.baidu.com/su?wd='+this.value+'&cb=jsonp';
+                    document.body.appendChild(oScript);
+                } else {
+                    oUl.style.display = 'none';
+                }
+            }
+        };
+        var myDate = new Date();
+        document.getElementById("date").innerText=myDate.toLocaleString( ); //获取日期与时间
+
+
+    </script>
 
 </body>
 </html>
