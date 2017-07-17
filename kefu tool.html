@@ -31,7 +31,7 @@
         p{
             width:480px;height:30px;color:white;text-align: center;background: black;margin: 0 auto;line-height: 30px;font-size: 14px;
         }
-        input {width: 300px; height: 20px; padding: 5px; border:1px solid #f90; font-size: 16px;}
+        input {width: 300px; height: 20px;line-height: 20px; padding: 5px; border:1px solid #f90; font-size: 16px;}
         textarea{
             text-indent: 1px;
             font-size: 16px;
@@ -41,48 +41,74 @@
         #ul1 {border:1px solid #f90; width: 310px; margin: 0;padding: 0; display: none;}
         li a { line-height: 20px; padding: 5px; text-decoration: none; color: black; display: block;}
         li a:hover{ background: #f90; color: white; }
+        select{
+            display: block;
+            line-height: 25px;
+            height: 25px;
+        }
+        #body{
+            font-size: 14px;
+            line-height: 20px;
+        }
+        #body>ul{width: 400px;margin: 10px auto;}
+        #body span{
+            color: red;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
+<div id="body">
+</div>
     <table style="margin: 50px auto">
         <tbody>
         <tr>
             <td>咨询日期：</td>
-            <td id="date"></td>
+            <td id="date" class="information"></td>
         </tr>
         <tr>
             <td>客户姓名：</td>
-            <td><input type="text" id="name"/></td>
+            <td><input type="text" id="name" class="information"/></td>
         </tr>
         <tr>
             <td>手机联系：</td>
-            <td><input type="text" id="mob"/></td>
+            <td><input type="text" id="mob" onblur="mob();" class="information"/></td>
         </tr>
         <tr>
             <td>座机联系：</td>
-            <td><input type="text" id="tel"/></td>
+            <td><input type="text" id="tel" onblur="mob();" class="information"/></td>
         </tr>
         <tr>
             <td>公司名称：</td>
-            <td><input type="text" id="q"/>
+            <td><input type="text" id="q" class="information"/>
                 <ul id="ul1"></ul></td>
         </tr>
         <tr>
             <td>投放需求：</td>
             <td>
-                <textarea name="need" id="need" cols="35.5" rows="10" ></textarea>
+                <textarea name="need" id="need" cols="35.5" rows="10" class="information"></textarea>
             </td>
         </tr>
         <tr>
             <td>对接人员：</td>
-            <!--<td><input type="text" id="people"/></td>-->
-            <td><select name="people" id="">
-
-            </select></td>
+            <td>
+                <select id="people" name="people" class="information">
+                    <option value="秦总" selected label="秦总">秦总</option>
+                    <option value="骆总"  label="骆总">骆总</option>
+                    <option value="马博宇" label="马博宇">马博宇</option>
+                    <option value="游镇峰"  label="游镇峰">游镇峰</option>
+                    <option value="车子恒" label="车子恒">车子恒</option>
+                    <option value="齐雁峰" label="齐雁峰">齐雁峰</option>
+                    <option value="彭茵妮" label="彭茵妮">彭茵妮</option>
+                </select>
+            </td>
         </tr>
         <tr>
             <td>QQ微信：</td>
-            <td><input type="text" id="qq"/></td>
+            <td><input type="text" id="qq" class="information"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" value="添加" style="width:100px;height: 32px;margin-left: 85px;" onclick="add();"> </td>
         </tr>
         </tbody>
     </table>
@@ -117,10 +143,50 @@
                 }
             }
         };
-        var myDate = new Date();
-        document.getElementById("date").innerText=myDate.toLocaleString( ); //获取日期与时间
 
+        function getTime() {
+            /*时间*/
+            var myDate = new Date();
+            document.getElementById("date").innerText=myDate.toLocaleString( );
 
+        }
+        setInterval(getTime,500);//获取日期与时间
+
+        function mob() {
+            var arrInput=document.getElementsByTagName("input");
+            for (var i=0;i<arrInput.length;i++){
+                arrInput[i].value=arrInput[i].value.replace(/\s/g,"");
+            }
+            /*手机*/
+            var mobLenghth=document.getElementById("mob").value.length;
+            if(mobLenghth==11||mobLenghth==0){
+                document.getElementById("mob").style.background="none";
+            }else {
+                document.getElementById("mob").style.background="red";
+            }
+            /*座机*/
+            document.getElementById("tel").value=document.getElementById("tel").value.replace("-","");
+            var telLenghth=document.getElementById("tel").value.length;
+            if(telLenghth==12||telLenghth==0||telLenghth==8){
+                document.getElementById("tel").style.background="none";
+            }else {
+                document.getElementById("tel").style.background="red";
+            }
+        }
+        function add() {
+            var arrInfor=document.getElementsByClassName("information");
+            if(arrInfor[1].value!==""&&arrInfor[5].value!==""){
+                document.getElementById("body").innerHTML+="<ul><li>咨询日期："+arrInfor[0].innerText+"</li><li>客户姓名："+arrInfor[1].value+"</li><li>手机联系："+arrInfor[2].value+"</li><li>座机联系："+arrInfor[3].value+
+                    "</li><li>公司名称："+arrInfor[4].value+"</li><li>投放需求："+arrInfor[5].value+"</li><li>对接人员："+arrInfor[6].value+"</li><li>QQ微信："+arrInfor[7].value+"</li><li><span onclick='del(this)'>删除</span></li></ul>"
+                for (var i=0;i<arrInfor.length;i++){
+                    arrInfor[i].value="";
+                }
+            }
+            mob();
+        }
+        function del(e) {
+            event.target.parentNode.parentNode.parentNode.removeChild(event.target.parentNode.parentNode);
+        }
     </script>
 
 </body>
