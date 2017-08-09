@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>清除浮动</title>
+    <style>
+        .father{  width: 200px;  padding: 50px 0;  background: peru;}
+        .son{ width:100px;height: 100px; float: left;background: mistyrose;}
+        /*方法1*/
+        .fway1{ /*推荐*/
+            overflow: hidden;
+            /*overflow: scroll;*/
+            /*overflow: auto;*/
+        }
+        .fway2{
+            display: inline-block;
+        }
+        .fway3{
+            /*position: absolute;*/
+            position: fixed;
+        }
+        .fway4{
+            zoom: 1;/* ie 6 7*/
+        }
+        .fway5:after{/*推荐*/
+            content: "";
+            display: block;
+            height: 0;
+            clear: both;/*伪类 存在兼容性问题*/
+        }
+        .clearboth{clear: both;}/*推荐*/
+        /*方法7 父级定义高度*/
+        /*方法8 父级也浮动*/
+        .fway9{
+            display:table;
+        }
+    </style>
+</head>
+<body>
+    <div class="father fway9">
+        <div class="son"></div>
+        <!--<p class="clearboth"></p>-->
+    </div>
+</body>
+</html>
