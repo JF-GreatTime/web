@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="jf" content="1006091832@qq.com">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="tool" />
+    <meta name="description" content="客服工具" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Window-target" content="_top">
+    <title>图钉办公</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+    <!--nav-->
+    <div id="header">
+        <img id="logo" src="./images/566528fe678b2.jpg" alt="logo">
+        <ul class="topNav">
+            <li><a href="javascript:void(0);">
+                <img src="./images/kefu.png" alt="kefu">
+            <span>
+                客服系统
+            </span>
+            </a></li>
+        </ul>
+    </div>
+    <!--侧边栏-->
+    <div id="aside">
+        <div class="login-info">
+            <a href="javascript:void(0);" id="show-shortcut">
+                <img src="./images/logo.png" alt="qmtmedia" class="img-circle">
+            </a>
+            <dl>
+                <dt>图钉办公</dt>
+                <dd>
+                    <a href="javascript:void(0);">解决最后一公里</a>
+                    <a id="logout" href="javascript:void(0);"></a>
+                </dd>
+            </dl>
+        </div>
+        <div class="navbar">
+            <ul class="asidenav">
+                <li><a href="index.html"><span>记录查询</span></a></li>
+                <li class="active"><a href="add.html"><span>客户登记</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <!--内容-->
+    <div id="main">
+        <div id="yzh-content" class="content">
+            <div class="main-title">
+                <h2>客服列表</h2>
+            </div>
+            <div id="kefubody"></div>
+            <div class="main-title">
+                <h2>客服添加</h2>
+            </div>
+            <!--权限-->
+            <div class="table-actions">
+                <div class="pull-right">
+                    <form action="?g=admin&amp;m=feedback&amp;a=index" method="get" class="form-inline" role="form">
+                        <input type="hidden" name="g" value="Admin">
+                        <input type="hidden" name="m" value="Feedback">
+                        <input type="hidden" name="a" value="index">
+                        <div class="form-group">
+                            <input id="key" type="password" class="form-control input-sm" name="" value="" placeholder="添加数据：请先输入权限码">
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--表格-->
+            <table class="table table-hover table-bordered table-condensed">
+                <thead>
+                <tr>
+                    <th width="30"><input type="checkbox" value="" id="check_box" onclick="selectall('ids[]');"></th>
+                    <th>ID</th>
+                    <th>时间</th>
+                    <th>姓名</th>
+                    <th>备注</th>
+                    <th>手机</th>
+                    <th>座机</th>
+                    <th>公司名称</th>
+                    <th>微信</th>
+                    <th>QQ</th>
+                    <th>需求</th>
+                    <th>对接人员</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr id="row1">
+                    <td width="30" align="center">
+                        <input class="inputcheckbox " name="ids[]" value="35" type="checkbox"></td>
+
+                    <td align="center">1</td>
+                    <td ><input id="date" class="information" type="date"></td>
+                    <td><input type="text" id="name" class="information" style="width: .6rem"/></td>
+                    <td><select id="bei" name="people" class="information">
+                        <option value="商桥客户" selected >商桥客户</option>
+                        <option value="商桥同行" >商桥同行</option>
+                        <option value="商桥留言" >商桥留言</option>
+                        <option value="电话客户" >电话客户</option>
+                        <option value="电话同行" >电话同行</option>
+                        <option value="QQ客户" >QQ客户</option>
+
+                    </select>
+                    </td>
+                    <td>
+                        <input type="text" id="mob" onblur="mobCheck();" class="information" style="width: 1.2rem" placeholder="手机11位"/>
+                        <!--<span>手机位数为11位</span>-->
+                    </td>
+                    <td>
+                        <input type="text" id="tel" onblur="mobCheck();" class="information" style="width: 1.2rem" placeholder="座机8或12位"/>
+                        <!--<span>座机位数8或12</span>-->
+                    </td>
+                    <td onmousemove="turn(true)" onmouseleave="turn(false)"><input type="text" id="q" class="information" />
+                        <ul id="ul1"></ul>
+                    </td>
+                    <td><input type="text" id="weixin" class="information" style="width: 1.2rem"/></td>
+                    <td><input type="text" id="qq" class="information" style="width: 1.2rem"/></td>
+                    <td>
+                        <textarea name="need" id="need"  class="information" placeholder="内容在100字以内"></textarea>
+                    </td>
+                    <td><select id="people" name="people" class="information">
+                        <option value="秦总" selected label="秦总">秦总</option>
+                        <option value="骆总"  label="骆总">骆总</option>
+                        <option value="游镇峰"  label="游镇峰">游镇峰</option>
+                        <option value="车子恒" label="车子恒">车子恒</option>
+                        <option value="齐雁峰" label="齐雁峰">齐雁峰</option>
+                        <option value="马博宇" label="马博宇">马博宇</option>
+                    </select></td>
+                    <td align="center">
+                        <!--<font color="green">未添加</font>-->
+                        <select id="lianxi" name="people" class="information">
+                            <option value="0" selected >未联系</option>
+                            <option value="1">已联系</option>
+                        </select>
+                    </td>
+                    <td align="center">
+                        <a href="javascript:void (0);" onclick="empty()">清空</a> |
+                        <a href="javascript:void (0);" onclick="addmysql()">添加</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/kefu.js"></script>
+</body>
+</html>

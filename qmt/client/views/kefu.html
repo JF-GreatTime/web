@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="jf" content="1006091832@qq.com">
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="keywords" content="tool" />
+    <meta name="description" content="客服工具" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Window-target" content="_top">
+    <title>客服工具</title>
+    <script src="../js/jquery.min.js"></script>
+    <link rel="stylesheet" href="../css/common.css">
+    <style>
+        p{
+            width:480px;height:30px;color:white;text-align: center;background: black;margin: 0 auto;line-height: 30px;font-size: 14px;
+        }
+        input {width: 300px; height: 20px;line-height: 20px; padding: 5px; border:1px solid #f90; font-size: 16px;}
+        textarea{
+            text-indent: 1px;
+            font-size: 16px;
+            padding: 5px;
+        }
+        td{font-size: 16px;}
+        #ul1 {border:1px solid #f90; width: 310px; margin: 0;padding: 0; display: none;}
+        li a { line-height: 20px; padding: 5px; text-decoration: none; color: black; display: block;}
+        li a:hover{ background: #f90; color: white; }
+        select{
+            display: block;
+            line-height: 25px;
+            height: 25px;
+        }
+        #body{
+            font-size: 14px;
+            line-height: 20px;
+        }
+        #body>ul{width: 400px;margin: 10px auto;}
+        #body span{
+            color: red;
+            cursor: pointer;
+        }
+    </style>
+
+</head>
+<body>
+
+<div id="body">
+</div>
+    <table style="margin: 50px auto">
+        <tbody>
+        <tr>
+            <td>咨询日期：</td>
+            <td id="date" class="information"></td>
+        </tr>
+        <tr>
+            <td>备注：</td>
+            <td><select id="bei" name="people" class="information">
+                <option value="商桥客户" selected >商桥客户</option>
+                <option value="商桥同行" >商桥同行</option>
+                <option value="电话客户" >电话客户</option>
+                <option value="电话同行" >电话同行</option>
+            </select></td>
+        </tr>
+        <tr>
+            <td>客户姓名：</td>
+            <td><input type="text" id="name" class="information"/></td>
+        </tr>
+        <tr>
+            <td>手机联系：</td>
+            <td><input type="text" id="mob" onblur="mob();" class="information"/></td>
+        </tr>
+        <tr>
+            <td>座机联系：</td>
+            <td><input type="text" id="tel" onblur="mob();" class="information"/></td>
+        </tr>
+        <tr>
+            <td>公司名称：</td>
+            <td><input type="text" id="q" class="information"/>
+                <ul id="ul1"></ul></td>
+        </tr>
+        <tr>
+            <td>投放需求：</td>
+            <td>
+                <textarea name="need" id="need" cols="35.5" rows="10" class="information"></textarea>
+            </td>
+        </tr>
+        <tr>
+            <td>对接人员：</td>
+            <td>
+                <select id="people" name="people" class="information">
+                    <option value="秦总" selected label="秦总">秦总</option>
+                    <option value="骆总"  label="骆总">骆总</option>
+                    <option value="马博宇" label="马博宇">马博宇</option>
+                    <option value="游镇峰"  label="游镇峰">游镇峰</option>
+                    <option value="车子恒" label="车子恒">车子恒</option>
+                    <option value="齐雁峰" label="齐雁峰">齐雁峰</option>
+                    <option value="彭茵妮" label="彭茵妮">彭茵妮</option>
+                </select>
+            </td>
+        </tr>
+        <tr>
+            <td>QQ：</td>
+            <td><input type="text" id="qq" class="information"/></td>
+        </tr>
+        <tr>
+            <td>微信：</td>
+            <td><input type="text" id="weixin" class="information"/></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="button" value="添加" style="width:100px;height: 32px;margin-left: 85px;" onclick="addKufu()"> </td>
+        </tr>
+        </tbody>
+    </table>
+<script type="text/javascript" src="../js/kefu.js"></script>
+</body>
+</html>

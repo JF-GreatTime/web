@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta name="jf" content="1006091832@qq.com">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="keywords" content="tool" />
+    <meta name="description" content="客服工具" />
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Window-target" content="_top">
+    <title>图钉办公</title>
+    <link rel="stylesheet" href="./css/common.css">
+    <script type="text/javascript" src="js/common.js"></script>
+</head>
+<body>
+    <!--nav-->
+    <div id="header">
+        <img id="logo" src="./images/566528fe678b2.jpg" alt="logo">
+        <ul class="topNav">
+            <li><a href="javascript:void(0);">
+                <img src="./images/kefu.png" alt="kefu">
+                <span>
+                    客服系统
+                </span>
+            </a></li>
+        </ul>
+    </div>
+    <!--侧边栏-->
+    <div id="aside">
+        <div class="login-info">
+            <a href="javascript:void(0);" id="show-shortcut">
+                <img src="./images/logo.png" alt="qmtmedia" class="img-circle">
+            </a>
+            <dl>
+                <dt>图钉办公</dt>
+                <dd>
+                    <a href="javascript:void(0);">解决最后一公里</a>
+                    <a id="logout" href="javascript:void(0);"></a>
+                </dd>
+            </dl>
+        </div>
+        <div class="navbar">
+            <ul class="asidenav">
+                <li class="active"><a href="./index.html"><span>记录查询</span></a></li>
+                <li><a href="add.html"><span>客户登记</span></a></li>
+            </ul>
+        </div>
+    </div>
+    <!--内容-->
+    <div id="main">
+        <div id="yzh-content">
+            <!--标题-->
+            <div class="main-title">
+                <h2>访问记录</h2>
+            </div>
+            <!--搜索栏-->
+            <div class="table-actions">
+               <!-- <a class="btn btn-sm btn-primary" onclick="myform.action='?g=admin&amp;m=feedback&amp;a=deleteall';return confirm_deleteall()">删除</a>
+                <a class="btn btn-sm btn-primary" onclick="myform.action='?g=admin&amp;m=feedback&amp;a=listorder';$('#myform').submit();">排序</a>
+                <a class="btn btn-sm btn-primary" onclick="myform.action='?g=admin&amp;m=feedback&amp;a=statusallok';$('#myform').submit();">通过审核</a>
+-->
+                <div class="pull-right">
+                    <form action="?g=admin&amp;m=feedback&amp;a=index" method="get" class="form-inline" role="form">
+                        <input type="hidden" name="g" value="Admin">
+                        <input type="hidden" name="m" value="Feedback">
+                        <input type="hidden" name="a" value="index">
+                        <div class="form-group">
+                            <input id="key" type="password" class="form-control input-sm" name="" value="" placeholder="修改数据：请先输入权限码">
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control kfserd" name="listData">
+                                <option value="公司" selected>公司</option>
+                                <option value="姓名">姓名</option>
+                                <option value="需求">需求</option>
+                                <option value="手机">手机</option>
+                                <option value="来源">来源</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input id="title" type="text" class="form-control input-sm kfserd" name="keyword" value=""  placeholder="输入搜索的关键词">
+                        </div>
+                        <div class="form-group">
+                            <select id="status" class="form-control kfserd"  name="map[status]">
+                                <option value="all">所有</option>
+                                <option value="0">未联系</option>
+                                <option value="1">已联系</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select class="form-control kfserd" name="listPeople">
+                                <option value="all">所有</option>
+                                <option value="秦总">秦总</option>
+                                <option value="骆总">骆总</option>
+                                <option value="游镇峰">游镇峰</option>
+                                <option value="车子恒">车子恒</option>
+                                <option value="齐雁峰">齐雁峰</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <select id="selDate" class="form-control " name="listData" onclick="selectDate()">
+                                <option value="y">年</option>
+                                <option value="m">月</option>
+                                <!--<option value="w">周</option>-->
+                                <option value="d" selected>日</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input  id="dateTy" type="date" class="form-control kfserd input-sm">
+                        </div>
+                        <input type="hidden" id="menuid" name="menuid" value="55">
+                        <div class="form-group">
+                        <div value="搜索" class="btn btn-sm btn-primary" onclick="kfsearch()">搜索</div>
+                        <div value="重置" class="btn btn-sm btn-primary" onclick="kfremake()">重置</div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!--表格-->
+            <table class="table ">
+                <thead>
+                <tr>
+                    <th width="30"><input type="checkbox" value=""></th>
+                    <!--<th width="40">排序</th>-->
+                    <!--<td width='40' align='center'><input name='listorders[35]' type='text' size='3' value='0' class='input-text-c'></td>-->
+                    <th>ID</th>
+                    <th>时间</th>
+                    <th>姓名</th>
+                    <th>备注</th>
+                    <th>手机</th>
+                    <th>座机</th>
+                    <th>公司名称</th>
+                    <th>微信</th>
+                    <th>QQ</th>
+                    <th class="needstyle">需求</th>
+                    <th>对接人员</th>
+                    <th>状态</th>
+                    <th>操作</th>
+                </tr>
+                </thead>
+                <tbody id="tbody">
+                </tbody>
+            </table>
+            <div class="row">
+                <div id="pages" class="pull-right"><a class="a1_page" href="javascript:void (0);"></a><a class="a1_page" href="javascript:void (0);"></a>
+                    <a class="first_page" onclick="goPages(1);" href="javascript:void (0);">首页</a>
+                    <a class="previous_page" onclick="goPages(3);" href="javascript:void (0);">上一页</a>
+                    <input class="cur_page form-control input-sm" type="text" value="1">
+                    <a class="next_page" onclick="goPages(4);" href="javascript:void (0);">下一页</a>
+                    <a class="Last_page" onclick="goPages(0);" href="javascript:void (0);">尾页</a>
+                </div>
+            </div>
+        </div>
+        <!--修改-->
+        <div id="yzh-xiu">
+            <div class="main-title">
+                <h2>数据修改</h2>
+            </div>
+            <!--修改数据表-->
+            <table class="table table-hover table-bordered table-condensed">
+                <thead>
+                <tr>
+                    <th width="30"><input type="checkbox" value=""></th>
+                    <th>ID</th>
+                    <th>时间</th>
+                    <th>姓名</th>
+                    <th>备注</th>
+                    <th>手机</th>
+                    <th>座机</th>
+                    <th>公司名称</th>
+                    <th>微信</th>
+                    <th>QQ</th>
+                    <th>需求</th>
+                    <th>对接人员</th>
+                    <th>状态</th>
+                    <th>管理操作</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr id="row1">
+                    <td width="30" align="center">
+                        <input  name="ids[]" value="35" type="checkbox"></td>
+                    <td align="center" class="Rdata"></td>
+                    <td id="date" class="Rdata"></td>
+                    <td><input type="text" id="name" class="Rdata" style="width: 60px"/></td>
+                    <td><select name="people" class="Rdata">
+                        <option value="商桥客户" selected >商桥客户</option>
+                        <option value="商桥同行" >商桥同行</option>
+                        <option value="电话客户" >电话客户</option>
+                        <option value="电话同行" >电话同行</option>
+                        <option value="QQ留言" >QQ留言</option>
+                    </select>
+                    </td>
+                    <td>
+                        <input type="text" id="mob" onblur="mobCheck();" class="Rdata" style="width: 120px" placeholder="手机11位"/>
+                        <!--<span>手机位数为11位</span>-->
+                    </td>
+                    <td>
+                        <input type="text" id="tel" onblur="mobCheck();" class="Rdata" style="width: 120px" placeholder="座机8或12位"/>
+                        <!--<span>座机位数8或12</span>-->
+                    </td>
+                    <td><input type="text" id="q" class="Rdata" />
+                        <ul id="ul1"></ul>
+                    </td>
+                    <td><input type="text"  class="Rdata" style="width: 1.2rem"/></td>
+                    <td><input type="text"  class="Rdata" style="width: 1.2rem"/></td>
+                    <td>
+                        <textarea name="need" cols="20" rows="5" class="Rdata" placeholder="内容在100字以内"></textarea>
+                    </td>
+                    <td><select name="people" class="Rdata">
+                        <option value="秦总" selected label="秦总">秦总</option>
+                        <option value="骆总"  label="骆总">骆总</option>
+                        <option value="游镇峰"  label="游镇峰">游镇峰</option>
+                        <option value="车子恒" label="车子恒">车子恒</option>
+                        <option value="齐雁峰" label="齐雁峰">齐雁峰</option>
+                        <option value="马博宇" label="马博宇">马博宇</option>
+                    </select></td>
+                    <td align="center">
+                        <select id="lianxi" name="people" class="Rdata">
+                            <option value="0" selected >未联系</option>
+                            <option value="1">已联系</option>
+                            <option value="2">已结束</option>
+                        </select>
+                    </td>
+                    <td align="center">
+                        <a href="javascript:void (0);" onclick="Modify2()">确定</a> |
+                        <a href="javascript:void (0);" onclick="back(true)">返回</a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script type="text/javascript" src="js/kufudata.js"></script>
+</body>
+</html>
